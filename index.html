@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C.H.I.L.D. — Children Have Intelligent Life Decisions</title>
+  <meta name="description" content="C.H.I.L.D. is a Rantoul, IL nonprofit dedicated to youth outreach, mentorship, and community programs empowering the next generation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:   #5B21B6;
+      --purple-light: #7C3AED;
+      --purple-dark:  #3B0764;
+      --gold:     #FBBF24;
+      --gold-dark:#D97706;
+      --white:    #FFFFFF;
+      --gray-50:  #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-600: #4B5563;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--gray-800);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(91, 33, 182, 0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,.2);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      text-decoration: none;
+    }
+
+    .nav-logo .logo-badge {
+      width: 44px; height: 44px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-size: .9rem;
+      color: var(--purple-dark);
+      letter-spacing: -.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .nav-logo small {
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      .nav-logo small {
+        display: block;
+        color: var(--gold);
+        font-size: .65rem;
+        font-weight: 400;
+        letter-spacing: .04em;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-donate {
+      background: var(--gold);
+      color: var(--purple-dark) !important;
+      padding: .5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: background .2s, transform .15s !important;
+    }
+
+    .nav-donate:hover {
+      background: var(--gold-dark) !important;
+      transform: translateY(-1px);
+      color: var(--white) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: .25rem;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 50%, #6D28D9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .25;
+      pointer-events: none;
+    }
+
+    .orb-1 { width: 500px; height: 500px; background: var(--gold); top: -150px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: #A78BFA; bottom: -100px; left: -80px; }
+
+    .hero-content { position: relative; max-width: 800px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(251, 191, 36, .15);
+      border: 1px solid rgba(251, 191, 36, .4);
+      color: var(--gold);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 12vw, 6rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .5rem;
+      letter-spacing: -.02em;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .hero h1 .gold { color: var(--gold); }
+
+    .hero-acronym {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(.9rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,.7);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      font-weight: 300;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.85);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--purple-dark);
+      padding: .9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(251,191,36,.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(251,191,36,.5);
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: .9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,.4);
+      transition: all .2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,.1);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.5);
+      font-size: .75rem;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll svg { width: 20px; opacity: .6; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--purple-dark);
+      padding: 3rem 2rem;
+    }
+
+    .stats-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {}
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      word-break: break-word;
+    }
+
+    .stat-label {
+      color: rgba(255,255,255,.7);
+      font-size: .875rem;
+      margin-top: .3rem;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--purple);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--gray-900);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    /* ── MISSION ── */
+    .mission { background: var(--white); }
+
+    .mission-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .mission-visual {
+      position: relative;
+    }
+
+    .mission-card {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      color: var(--white);
+    }
+
+    .acronym-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .acronym-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    .acronym-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .acronym-word strong { color: var(--gold); }
+
+    .mission-float {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--gold);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.15);
+      max-width: 180px;
+      text-align: center;
+    }
+
+    .mission-float .big { font-size: 2rem; font-weight: 900; color: var(--purple-dark); display: block; }
+    .mission-float small { font-size: .75rem; color: var(--purple); font-weight: 600; }
+
+    /* ── PROGRAMS ── */
+    .programs { background: var(--gray-50); }
+
+    .programs-header { margin-bottom: 3rem; }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .program-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 2px 15px rgba(0,0,0,.06);
+      transition: transform .25s, box-shadow .25s;
+      border-top: 4px solid transparent;
+    }
+
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,.1);
+    }
+
+    .program-card.purple { border-top-color: var(--purple); }
+    .program-card.gold   { border-top-color: var(--gold); }
+    .program-card.teal   { border-top-color: #0D9488; }
+
+    .program-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .program-card.purple .program-icon { background: #EDE9FE; }
+    .program-card.gold   .program-icon { background: #FEF3C7; }
+    .program-card.teal   .program-icon { background: #CCFBF1; }
+
+    .program-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .6rem;
+    }
+
+    .program-card p {
+      font-size: .9rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    .program-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem .75rem;
+      border-radius: 50px;
+    }
+
+    .program-card.purple .program-tag { background: #EDE9FE; color: var(--purple); }
+    .program-card.gold   .program-tag { background: #FEF3C7; color: var(--gold-dark); }
+    .program-card.teal   .program-tag { background: #CCFBF1; color: #0D9488; }
+
+    /* ── EVENTS TIMELINE ── */
+    .events { background: var(--white); }
+
+    .timeline {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      display: contents;
+    }
+
+    .timeline-content {
+      background: var(--gray-50);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      border-left: 4px solid var(--purple);
+    }
+
+    .timeline-content.right { }
+    .timeline-content.left  { }
+
+    .timeline-dot { display: none; }
+
+    .timeline-month {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: .4rem;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .4rem;
+    }
+
+    .timeline-content p {
+      font-size: .875rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 100%);
+      color: var(--white);
+    }
+
+    .about .section-tag { color: var(--gold); }
+    .about .section-title { color: var(--white); }
+    .about .section-subtitle { color: rgba(255,255,255,.75); }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .founder-photo-placeholder {
+      border-radius: 24px;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .founder-photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .founder-badge {
+      position: absolute;
+      bottom: 1.5rem; right: -1.5rem;
+      background: var(--gold);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    }
+
+    .founder-badge strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--purple-dark);
+      font-weight: 700;
+    }
+
+    .founder-badge small {
+      font-size: .7rem;
+      color: var(--purple);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .about-text { }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.5;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .about-body {
+      font-size: 1rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.8;
+    }
+
+    /* ── DONATE / CTA ── */
+    .donate { background: var(--gray-50); }
+
+    .donate-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .donate-amounts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem;
+      margin: 1.5rem 0;
+    }
+
+    .amount-btn {
+      background: var(--white);
+      border: 2px solid #E5E7EB;
+      border-radius: 12px;
+      padding: .875rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .amount-btn:hover, .amount-btn.active {
+      border-color: var(--purple);
+      background: #EDE9FE;
+      color: var(--purple);
+    }
+
+    .amount-btn small {
+      display: block;
+      font-size: .65rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      margin-top: .2rem;
+    }
+
+    .amount-btn:hover small, .amount-btn.active small { color: var(--purple-light); }
+
+    .donate-btn-full {
+      display: block;
+      width: 100%;
+      background: var(--purple);
+      color: var(--white);
+      padding: 1rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(91,33,182,.3);
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      margin-top: .5rem;
+    }
+
+    .donate-btn-full:hover {
+      background: var(--purple-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(91,33,182,.4);
+    }
+
+    .donate-note {
+      font-size: .8rem;
+      color: var(--gray-600);
+      text-align: center;
+      margin-top: .75rem;
+    }
+
+    .volunteer-card {
+      background: var(--purple);
+      border-radius: 20px;
+      padding: 2.5rem;
+      color: var(--white);
+    }
+
+    .volunteer-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .volunteer-card p {
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .volunteer-ways {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .volunteer-ways li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .9rem;
+      color: rgba(255,255,255,.9);
+    }
+
+    .volunteer-ways li::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--purple);
+      padding: .85rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-white:hover {
+      background: var(--gold);
+      color: var(--purple-dark);
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 50px; height: 50px;
+      background: #EDE9FE;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card h4 {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: .3rem;
+    }
+
+    .contact-card p, .contact-card a {
+      font-size: .95rem;
+      color: var(--gray-600);
+      text-decoration: none;
+      line-height: 1.5;
+    }
+
+    .contact-card a:hover { color: var(--purple); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,.6);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+    }
+
+    .footer-logo .badge {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-size: .8rem;
+      color: var(--purple-dark);
+    }
+
+    .footer-logo-text { color: var(--white); font-weight: 600; font-size: .9rem; }
+    .footer-logo-text small { display: block; font-size: .65rem; color: rgba(255,255,255,.4); font-weight: 400; }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--purple-dark);
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.3rem; }
+      .hamburger { display: flex; z-index: 200; }
+
+      .mission-layout,
+      .about-layout,
+      .donate-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .mission-float { position: static; margin-top: 1rem; }
+      .founder-badge { position: static; margin-top: 1rem; display: inline-block; }
+
+      .timeline { grid-template-columns: 1fr; }
+      .timeline-item > div:empty { display: none; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-badge">❤️</div>
+    <span>C.H.I.L.D.
+      <small>Children Have Intelligent Life Decisions</small>
+    </span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate" class="nav-donate">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-orb orb-1"></div>
+  <div class="hero-orb orb-2"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Rantoul, Illinois</span>
+    <h1><span class="gold">C.H.I.L.D.</span></h1>
+    <p class="hero-acronym">Children &nbsp;·&nbsp; Have &nbsp;·&nbsp; Intelligent &nbsp;·&nbsp; Life &nbsp;·&nbsp; Decisions</p>
+    <p>We're a Rantoul-based nonprofit that shows up for kids. Backpacks, mentors, talent shows, and whatever it takes to help them grow.</p>
+    <div class="hero-ctas">
+      <a href="#donate" class="btn-primary">Support the Kids</a>
+      <a href="#programs" class="btn-secondary">See What We Do</a>
+    </div>
+  </div>
+  <a href="#mission" class="hero-scroll">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </a>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-number">Rantoul, IL</span>
+      <div class="stat-label">Our Home</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">3+</span>
+      <div class="stat-label">Active Programs</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">4</span>
+      <div class="stat-label">Seasons, Year-Round</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">Kids</span>
+      <div class="stat-label">First. Always.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="section-inner">
+    <div class="mission-layout">
+      <div class="mission-text">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">We Started Because Kids Needed More</h2>
+        <p class="section-subtitle">
+          C.H.I.L.D. was started because the kids in Rantoul needed more. More support, more people in their corner, more chances to be seen. So Belinda Moffett got to work. That's still what we do.
+        </p>
+      </div>
+      <div class="mission-visual">
+        <div class="mission-card">
+          <ul class="acronym-list">
+            <li>
+              <span class="acronym-letter">C</span>
+              <span class="acronym-word"><strong>Children</strong> are at the center of everything we do.</span>
+            </li>
+            <li>
+              <span class="acronym-letter">H</span>
+              <span class="acronym-word"><strong>Have</strong> the potential to achieve greatness.</span>
+            </li>
+            <li>
+              <span class="acronym-letter">I</span>
+              <span class="acronym-word"><strong>Intelligent</strong> minds that need nurturing &amp; opportunity.</span>
+            </li>
+            <li>
+              <span class="acronym-letter">L</span>
+              <span class="acronym-word"><strong>Life</strong> is full of choices, and we help youth make good ones.</span>
+            </li>
+            <li>
+              <span class="acronym-letter">D</span>
+              <span class="acronym-word"><strong>Decisions</strong> shaped by guidance, community, and love.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="mission-float">
+          <span class="big">❤️</span>
+          <small>Rantoul, IL Community</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="section-inner">
+    <div class="programs-header">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">Real Programs for Real Kids</h2>
+      <p class="section-subtitle">No fluff. Just things that actually help: supplies, stages, and people who care.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card purple">
+        <div class="program-icon">🎒</div>
+        <h3>Back to School Giveaway</h3>
+        <p>Every August we hand out backpacks and school supplies to kids in the Rantoul area. No child should walk into the first day of school without what they need.</p>
+        <span class="program-tag">Annual · Late Summer</span>
+      </div>
+      <div class="program-card gold">
+        <div class="program-icon">🌟</div>
+        <h3>Talent Show</h3>
+        <p>Kids in Rantoul have real talent. We give them a stage to prove it. Singers, dancers, spoken word. Everyone gets a shot to shine in front of their community.</p>
+        <span class="program-tag">Seasonal Event</span>
+      </div>
+      <div class="program-card teal">
+        <div class="program-icon">🤝</div>
+        <h3>Mentorship Program</h3>
+        <p>Sometimes a kid just needs an adult who shows up consistently. Our mentors do exactly that: listening, guiding, and being present when it matters most.</p>
+        <span class="program-tag">Year-Round</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS TIMELINE -->
+<section class="events" id="events">
+  <div class="section-inner">
+    <span class="section-tag">Mark Your Calendar</span>
+    <h2 class="section-title">We're Out Here Year-Round</h2>
+    <p class="section-subtitle">Spring, summer, fall, winter. There's always something happening for Rantoul kids.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content left">
+          <div class="timeline-month">Spring</div>
+          <h3>Talent Show & Community Celebration</h3>
+          <p>Young performers take the stage and the whole community comes out to cheer them on. It's one of the best nights of the year.</p>
+        </div>
+        <div class="timeline-dot"><span></span></div>
+        <div></div>
+      </div>
+      <div class="timeline-item">
+        <div></div>
+        <div class="timeline-dot"><span></span></div>
+        <div class="timeline-content right">
+          <div class="timeline-month">Summer</div>
+          <h3>Youth Outreach &amp; Engagement</h3>
+          <p>School's out but we don't stop. Mentorship check-ins, community activities, and keeping kids connected all summer long.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content left">
+          <div class="timeline-month">August</div>
+          <h3>Back to School Giveaway</h3>
+          <p>Our biggest event of the year. Backpacks, supplies, and smiles, handed out right here in Rantoul before the first bell rings.</p>
+        </div>
+        <div class="timeline-dot"><span></span></div>
+        <div></div>
+      </div>
+      <div class="timeline-item">
+        <div></div>
+        <div class="timeline-dot"><span></span></div>
+        <div class="timeline-content right">
+          <div class="timeline-month">Fall / Winter</div>
+          <h3>Holiday Outreach &amp; Mentorship</h3>
+          <p>The holidays can be hard for some families. We make sure kids in our community feel remembered, cared for, and not alone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-layout">
+      <div class="about-image-wrap">
+        <div class="founder-photo-placeholder">
+          <img src="image-1778415694517.jpg" alt="Belinda Moffett, Founder and Director of C.H.I.L.D." />
+        </div>
+        <div class="founder-badge">
+          <strong>Belinda Moffett</strong>
+          <small>Founder &amp; Director</small>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-tag">Meet the Founder</span>
+        <h2 class="section-title">Belinda Moffett</h2>
+        <blockquote class="about-quote">
+          "I started C.H.I.L.D. because I love this community and I believe in these kids. Somebody had to show up, so I did."
+        </blockquote>
+        <p class="about-body">
+          Belinda Moffett is a Rantoul native who saw a need and did something about it. C.H.I.L.D. is personal to her. Built from the ground up with her own hands, her own heart, and the support of people who believe in the same thing she does: that every kid in this city deserves a real shot.
+          <br /><br />
+          She's not running a program. She's raising a community.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="donate" id="donate">
+  <div class="section-inner">
+    <div class="donate-layout">
+      <div>
+        <span class="section-tag">Give</span>
+        <h2 class="section-title">Every Dollar Goes to the Kids</h2>
+        <p class="section-subtitle">No overhead fluff. What you give goes straight to backpacks, events, and the programs that keep our youth moving forward.</p>
+        <div class="donate-amounts">
+          <button class="amount-btn" onclick="selectAmount(this)">
+            $25
+            <small>Fills a backpack</small>
+          </button>
+          <button class="amount-btn active" onclick="selectAmount(this)">
+            $50
+            <small>Supplies for 2 students</small>
+          </button>
+          <button class="amount-btn" onclick="selectAmount(this)">
+            $100
+            <small>Sponsors an event spot</small>
+          </button>
+          <button class="amount-btn" onclick="selectAmount(this)">
+            $250
+            <small>Funds a mentor month</small>
+          </button>
+        </div>
+        <a href="mailto:info@childrantoul.org?subject=Donation%20Inquiry" class="donate-btn-full">Donate Now ❤️</a>
+        <p class="donate-note">100% local · Every dollar stays in Rantoul</p>
+      </div>
+      <div>
+        <div class="volunteer-card">
+          <h3>Want to Help?</h3>
+          <p>You don't have to write a check to make a difference. Here's how people in Rantoul are already stepping up:</p>
+          <ul class="volunteer-ways">
+            <li>Volunteer at seasonal events</li>
+            <li>Become a youth mentor</li>
+            <li>Donate supplies or resources</li>
+            <li>Sponsor a program or event</li>
+            <li>Spread the word in your network</li>
+          </ul>
+          <a href="#contact" class="btn-white">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <span class="section-tag">Reach Us</span>
+    <h2 class="section-title">Come Find Us</h2>
+    <p class="section-subtitle">Have a question? Want to volunteer or donate supplies? Reach out. We're real people and we'll get back to you.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Location</h4>
+          <p>Rantoul, Illinois</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:info@childrantoul.org">info@childrantoul.org</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📱</div>
+        <div>
+          <h4>Social Media</h4>
+          <p>Links coming soon. Ask Belinda!</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🙋</div>
+        <div>
+          <h4>Founded By</h4>
+          <p>Belinda Moffett<br />Director &amp; Founder</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">
+      <div class="badge">❤️</div>
+      <div class="footer-logo-text">
+        C.H.I.L.D.
+        <small>Rantoul, Illinois</small>
+      </div>
+    </a>
+    <div class="footer-links">
+      <a href="#mission">Mission</a>
+      <a href="#programs">Programs</a>
+      <a href="#events">Events</a>
+      <a href="#about">About</a>
+      <a href="#donate">Donate</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 C.H.I.L.D. · All rights reserved</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Donate amount selector
+  function selectAmount(btn) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Smooth scroll nav highlight
+  const sections = document.querySelectorAll('section[id], div[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
